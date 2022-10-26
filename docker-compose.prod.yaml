@@ -17,7 +17,5 @@ services:
 
 
 networks:
-  ### You should create that network externally
-  ### example: `docker network create -d bridge mf`
   mf:
     external: true
