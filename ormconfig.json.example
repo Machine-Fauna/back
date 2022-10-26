@@ -1,0 +1,10 @@
+{
+  "type": "mysql",
+  "host": "db",
+  "port": 3306,
+  "username": "machine_fauna",
+  "password": "machine_fauna",
+  "database": "machine_fauna",
+  "entities": ["src/**/**.entity{.ts,.js}"],
+  "synchronize": true
+}

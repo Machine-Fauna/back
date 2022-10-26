@@ -1,0 +1,23 @@
+version: "3.7"
+services:
+  mf-back:
+    build:
+      context: .
+      dockerfile: .github/Dockerfile
+    container_name: mf-back
+    expose:
+      - 3000
+    healthcheck:
+      test: "nc -z localhost 3000"
+      interval: 5s
+      timeout: 30s
+      retries: 10
+    networks:
+      - mf
+
+
+networks:
+  ### You should create that network externally
+  ### example: `docker network create -d bridge mf`
+  mf:
+    external: true

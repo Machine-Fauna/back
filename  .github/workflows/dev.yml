@@ -1,0 +1,29 @@
+---
+
+name: Development
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deliver:
+    runs-on: self-hosted
+    environment: dev
+    steps:
+      - name: Checkout 
+        uses: actions/checkout@v2
+
+      - name: Generate config
+        run: envsubst < ormconfig.json.tpl > ormconfig.json
+
+      - name: Run application
+        run: docker compose up --build -d
+    
+  # setup:
+  #   runs-on: self-hosted
+  #   needs: deliver
+  #   steps:
+  #     - name: Setup databases
+  #       run: make db

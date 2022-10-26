@@ -1,0 +1,27 @@
+# Logs
+logs
+*.log
+.DS_Store
+
+npm-debug.log*
+
+# Optional npm cache directory
+.npm
+
+#IDEs
+.idea
+
+#config files
+ormconfig.json
+src/config.ts
+prisma/.env
+
+# code testing coverage
+coverage
+
+# dependencies and built items
+dist/*
+node_modules/*
+
+# database
+database/*
