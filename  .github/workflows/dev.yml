@@ -9,7 +9,7 @@ on:
 
 jobs:
   deliver:
-    runs-on: self-hosted
+    runs-on: self-hosted,dev
     environment: dev
     steps:
       - name: Checkout 
@@ -22,7 +22,7 @@ jobs:
         run: docker compose up --build -d
     
   # setup:
-  #   runs-on: self-hosted
+  #   runs-on: self-hosted,dev
   #   needs: deliver
   #   steps:
   #     - name: Setup databases
