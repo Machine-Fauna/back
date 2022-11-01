@@ -16,7 +16,7 @@ RUN npm install --legacy-peer-deps
 # Add source code
 COPY ./index.js ./tsconfig.json ./ormconfig.json ./nestconfig.json      ./
 COPY ./prisma           prisma
-COPY ./config           config
+COPY ./public           public
 COPY ./src              src
 
 # Build application
