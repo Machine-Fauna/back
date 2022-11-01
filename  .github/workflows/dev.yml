@@ -5,7 +5,7 @@ name: Development
 on:
   push:
     branches:
-      - master
+      - dev
 
 jobs:
   deliver:
