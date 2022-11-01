@@ -10,7 +10,7 @@ on:
 jobs:
   deliver:
     runs-on: self-hosted,development
-    environment: dev
+    # environment: dev
     steps:
       - name: Checkout 
         uses: actions/checkout@v2
