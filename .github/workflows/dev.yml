@@ -9,7 +9,9 @@ on:
 
 jobs:
   deliver:
-    runs-on: self-hosted,development
+    runs-on: 
+      - self-hosted
+      - development
     environment: dev
     steps:
       - name: Checkout 
