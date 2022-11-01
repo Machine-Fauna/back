@@ -19,4 +19,4 @@ jobs:
         run: envsubst < ormconfig.json.tpl > ormconfig.json
 
       - name: Run application
-        run: docker compose up --build -d
+        run: docker compose -f docker-compose.prod.yaml up --build -d
