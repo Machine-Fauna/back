@@ -18,7 +18,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Generate config
-        run: envsubst < ormconfig.json.tpl > ormconfig.json
+        run: |
+          envsubst < ormconfig.json.tpl > ormconfig.json
+          envsubst < src/config.ts.tpl > src/config.ts
 
       - name: Run application
         run: docker compose -f docker-compose.prod.yaml up --build -d
