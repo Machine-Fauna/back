@@ -5,6 +5,6 @@
   "username": "${DB_USER}",
   "password": "${DB_PASS}",
   "database": "${DB_NAME}",
-  "entities": ["src/**/**.entity{.ts,.js}"],
+  "entities": [join(__dirname, '**', '*.entity.{ts,js}')],
   "synchronize": true
 }

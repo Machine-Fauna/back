@@ -5,6 +5,7 @@ services:
       context: .
       dockerfile: .github/Dockerfile
     container_name: mf-back
+    restart: unless-stopped
     expose:
       - 3000
     healthcheck:
