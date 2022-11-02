@@ -9,7 +9,7 @@ services:
     expose:
       - 3000
     healthcheck:
-      test: "nc -z localhost 3000"
+      test: "curl --fail localhost:3000/api/tags > /dev/null"
       interval: 5s
       timeout: 30s
       retries: 10
