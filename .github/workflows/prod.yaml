@@ -1,0 +1,36 @@
+---
+
+name: Production
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deliver:
+    runs-on: 
+      - self-hosted
+      - production
+    environment: prod
+    steps:
+      - name: Checkout 
+        uses: actions/checkout@v2
+
+      - name: Generate config
+        env:
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PASS: ${{ secrets.DB_PASS }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        run: |
+          envsubst < ormconfig.json.tpl > ormconfig.json
+          envsubst < src/config.ts.tpl > src/config.ts
+
+      - name: Run application
+        run: |
+          docker compose -f docker-compose.prod.yaml build
+          docker compose -f docker-compose.prod.yaml down
+          docker compose -f docker-compose.prod.yaml up -d
