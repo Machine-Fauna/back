@@ -27,7 +27,8 @@ jobs:
           DB_ROOT_USER: ${{ secrets.DB_ROOT_USER }}
           DB_ROOT_PASS: ${{ secrets.DB_ROOT_PASS }}
         run: |
-          bash .github/env.sh
+          . .github/env.sh
+          bash .github/database.sh
           envsubst < ormconfig.json.tpl > ormconfig.json
           envsubst < src/config.ts.tpl > src/config.ts
 
