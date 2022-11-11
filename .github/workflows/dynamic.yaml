@@ -1,0 +1,35 @@
+---
+
+name: Dynamic
+
+on:
+  push:
+    branches:
+      - "*"
+      - "!dev"
+      - "!master"
+
+jobs:
+  deliver:
+    runs-on: 
+      - self-hosted
+      - development
+    steps:
+      - name: Checkout 
+        uses: actions/checkout@v2
+
+      - name: Generate docker-compose file
+        run: |
+          envsubst < docker-compose.yaml.tpl > docker-compose.dynamic.yaml
+
+      - name: Generate config
+        run: |
+          bash .github/env.sh
+          envsubst < ormconfig.json.tpl > ormconfig.json
+          envsubst < src/config.ts.tpl > src/config.ts
+
+      - name: Run application
+        run: |
+          docker compose -f docker-compose.prod.yaml build
+          docker compose -f docker-compose.prod.yaml down
+          docker compose -f docker-compose.prod.yaml up -d
