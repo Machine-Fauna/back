@@ -1,6 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
+# Prepare variables for the script
+export DB_HOST="127.0.0.1"
 echo "mysql://${DB_USER}:${DB_PASS}@${DB_HOST}:${DB_PORT}/${DB_NAME}"
 
 # Do the database setup
