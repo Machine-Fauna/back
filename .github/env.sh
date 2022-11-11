@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # Generate database credentials based on Dynamic Environment name
-export DB_HOST="mf-db"
+export DB_HOST="localhost"
 export DB_PORT="3306"
 export DB_USER="back_${GITHUB_REF_NAME//-/_}"
 export DB_NAME="${DB_USER}"
