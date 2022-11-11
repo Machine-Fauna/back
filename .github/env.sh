@@ -8,3 +8,4 @@ export DB_USER="back_${GITHUB_REF_NAME//-/_}"
 export DB_NAME="${DB_USER}"
 export DB_PASS="$(echo "${DB_USER}" | shasum -a 256 | cut -c -12)"
 
+echo "mysql://${DB_USER}:${DB_PASS}@${DB_HOST}:${DB_PORT}/${DB_NAME}"
