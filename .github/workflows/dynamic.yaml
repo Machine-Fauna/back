@@ -23,6 +23,9 @@ jobs:
           envsubst < docker-compose.yaml.tpl > docker-compose.dynamic.yaml
 
       - name: Generate config
+        env:
+          DB_ROOT_USER: ${{ secrets.DB_ROOT_USER }}
+          DB_ROOT_PASS: ${{ secrets.DB_ROOT_PASS }}
         run: |
           bash .github/env.sh
           envsubst < ormconfig.json.tpl > ormconfig.json
