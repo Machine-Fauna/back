@@ -31,3 +31,10 @@ else
     "
   echo "Setup MySQL DB:" "Database created."
 fi
+
+# Pass variables to the next jobs
+echo DB_HOST="127.0.0.1" >> ${GITHUB_ENV}
+echo DB_PORT="3306" >> ${GITHUB_ENV}
+echo DB_USER="back_${GITHUB_REF_NAME//-/_}" >> ${GITHUB_ENV}
+echo DB_NAME="${DB_USER}" >> ${GITHUB_ENV}
+echo DB_PASS="$(echo "${DB_USER}" | shasum -a 256 | cut -c -12)" >> ${GITHUB_ENV}
