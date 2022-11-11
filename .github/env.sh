@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -euo pipefail
 
 # Generate database credentials based on Dynamic Environment name
 export DB_HOST="mf-db"
